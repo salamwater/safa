@@ -1,14 +1,11 @@
-import React from "react";
-import "./style.css";
-
-export const AndroidCompact = () => {
-  return (
-    <div className="android-compact">
-      <div className="div">
-        <div className="text-wrapper">Hello Word</div>
-
-        <div className="rectangle" />
-      </div>
-    </div>
-  );
-};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <h2>Coming Soon..!</h2>
+</body>
+</html>
