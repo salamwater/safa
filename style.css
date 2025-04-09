@@ -13,9 +13,13 @@ body {
   display: flex;
   flex-direction: column;
   -webkit-tap-highlight-color: transparent;
+  animation: fadeInBody 1.5s ease forwards;
 }
 
-/* SPLASH SCREEN */
+
+@keyframes nono {
+
+}
 .splash-screen {
   position: fixed;
   top: 0; 
@@ -27,12 +31,31 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  animation: fadeOut 2s ease 3s forwards;
+}
+
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes slideUpSplash {
+  0% { top: 0; opacity: 1; }
+  100% { top: -100vh; opacity: 0; }
 }
 
 .splash-logo {
+  position: relative;
+  top: -30px;
   max-width: 40%;
   height: auto;
-  animation: fadeIn 0.5s ease-in-out;
+  animation: logoPop 1.2s ease;
+}
+
+@keyframes logoPop {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 /* HEADER */
@@ -41,38 +64,62 @@ body {
   padding: 2rem 1rem;
   background: linear-gradient(90deg, rgba(209,0,108,0.8), rgba(233,30,99,0.8));
   color: #fff;
+  animation: slideDownHeader 1.2s ease forwards;
+  height: ;
 
+}
+
+@keyframes slideDownHeader {
+  0% { transform: translateY(-100px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 .invitation-text {
   font-size: 1rem;
   margin-bottom: 0.5rem;
+  animation: fadeInUp 1.5s ease forwards;
 }
 
 .couple-name {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
+  animation: fadeInUp 1.7s ease forwards;
 }
 
 .ring-image {
   width: 140px;
   height: auto;
   margin-bottom: -40px;
-  margin-top: -60px;
+  position: relative;
+  margin-top: -20px;
+  animation: bounceRing 2s ease infinite;
 }
 
-/* DATE SECTION with improved GLASSMORPHISM */
+@keyframes bounceRing {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* DATE SECTION */
 .datebg {
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
   border-radius: 20px;
   padding: 2rem;
   margin: 2rem 1rem;
   text-align: center;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: fadeInZoom 1.5s ease forwards;
+  position: relative;
+  bottom: 50px;
+  margin-bottom: -30px;
+}
+
+@keyframes fadeInZoom {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 .date-info {
@@ -86,12 +133,14 @@ body {
 .main-content {
   flex: 1;
   padding: 1rem;
+  animation: fadeInUp 2s ease forwards;
 }
 
 /* Countdown */
 .countdown-section {
   text-align: center;
   margin-bottom: 2rem;
+  animation: fadeInUp 2.2s ease forwards;
 }
 
 .countdown-timer {
@@ -105,19 +154,18 @@ body {
 .time-box {
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
   width: 70px;
-  padding: 1rem 1rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  animation: fadeInZoom 1.8s ease forwards;
 }
 
 .time-box span {
-  display: block;
   font-size: 1.5rem;
   font-weight: 700;
   color: #d1006c;
@@ -137,11 +185,11 @@ body {
   gap: 1rem;
   margin-top: 2rem;
   flex-wrap: wrap;
+  animation: fadeInUp 2.4s ease forwards;
 }
 
 .call-button,
 .location-button {
-  flex: 1 1 auto;
   min-width: 140px;
   padding: 0.8rem 1rem;
   text-align: center;
@@ -153,6 +201,7 @@ body {
   font-weight: 600;
   text-decoration: none;
   transition: background 0.3s ease, transform 0.2s ease;
+  animation: fadeInZoom 2s ease forwards;
 }
 
 .call-button:hover,
@@ -168,32 +217,19 @@ footer {
   font-size: 0.9rem;
   color: #888;
   padding: 1rem;
+  animation: fadeIn 2.5s ease forwards;
 }
 
-/* Responsive */
-@media (min-width: 600px) {
-  .countdown-timer {
-    gap: 2rem;
-  }
-  .time-box {
-    width: 80px;
-  }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
+/* Fun Terms */
 .fun-terms {
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border-radius: 20px;
   margin: 2rem 1rem;
   padding: 2rem;
   text-align: left;
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  animation: fadeInUp 2.6s ease forwards;
 }
 
 .fun-terms h2 {
@@ -213,6 +249,7 @@ footer {
   color: #444;
   position: relative;
   padding-left: 1.5rem;
+  animation: fadeInLeft 2.8s ease forwards;
 }
 
 .fun-terms li::before {
@@ -221,6 +258,26 @@ footer {
   left: 0;
 }
 
+/* General Animations */
+@keyframes fadeInBody {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInLeft {
+  0% { transform: translateX(-30px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
 
 
 
@@ -233,48 +290,124 @@ footer {
 
 
 
-/* Popup Modal Styles */
-.popup {
+/* BACKDROP */
+#popup {
+  display: none;
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(5px);
-  display: flex;
-  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
   justify-content: center;
-  z-index: 10000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+  align-items: center;
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+  z-index: 1000;
 }
 
+/* SHOW */
+#popup.show {
+  display: flex;
+  opacity: 1;
+}
+
+/* POPUP BOX */
 .popup-content {
-  background: rgba(255,255,255,0.9);
-  padding: 2rem;
-  border-radius: 20px;
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 16px;
   text-align: center;
-  box-shadow: 0px 8px 24px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  min-width: 280px;
+  max-width: 90%;
 }
 
-.popup-content h2 {
-  margin-bottom: 1rem;
-  color: #d1006c;
+/* HEADING */
+.popup-heading {
+  margin: 0;
+  font-size: 24px;
+  color: #222;
+  opacity: 0;
 }
 
+/* TEXT */
+.popup-text {
+  font-size: 16px;
+  color: #555;
+  margin: 15px 0 20px;
+  opacity: 0;
+}
+
+/* BUTTON */
 .popup-content button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
   background-color: #d1006c;
   color: white;
   border: none;
+  padding: 10px 20px;
   border-radius: 8px;
-  font-size: 1rem;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0;
+  transition: background-color 0.3s;
 }
 
-.popup.show {
-  opacity: 1;
-  pointer-events: auto;
+.popup-content button:hover {
+  background-color: #99004f;;
+}
+
+/* --- Main Animations --- */
+@keyframes popupScale {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes popupSlideTop {
+  0% { transform: translateY(-60px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes popupSlideBottom {
+  0% { transform: translateY(60px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* --- Content Parts Animations --- */
+@keyframes fadeSlideDown {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Animation Classes */
+.animate-scale {
+  animation: popupScale 0.5s ease;
+}
+
+.animate-slide-top {
+  animation: popupSlideTop 0.5s ease;
+}
+
+.animate-slide-bottom {
+  animation: popupSlideBottom 0.5s ease;
+}
+
+/* Individual Part Animations */
+.heading-animate {
+  animation: fadeSlideDown 0.5s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.text-animate {
+  animation: fadeSlideUp 0.5s ease forwards;
+  animation-delay: 0.6s;
+}
+
+.button-animate {
+  animation: fadeSlideUp 0.5s ease forwards;
+  animation-delay: 0.9s;
 }
