@@ -10,19 +10,57 @@ window.addEventListener("load", () => {
 
   // Show popup after 3 seconds
   setTimeout(() => {
-    document.getElementById("popup").classList.add("show");
-  }, 3000);
+    const popup = document.getElementById("popup");
+    const popupContent = document.querySelector(".popup-content");
+    const heading = document.querySelector(".popup-heading");
+    const text = document.querySelector(".popup-text");
+    const button = popupContent.querySelector("button");
 
-  // Request Notification Permission
-  if (Notification.permission !== "granted") {
-    Notification.requestPermission();
-  }
+    // Update Content
+    heading.textContent = "📢 Stay Tuned!";
+    text.textContent = "This page will be updated soon with new features!";
+
+    // Random Animation on Popup Box
+    const animations = ["animate-scale", "animate-slide-top", "animate-slide-bottom"];
+    const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+
+    popupContent.classList.remove("animate-scale", "animate-slide-top", "animate-slide-bottom");
+    popupContent.classList.add(randomAnimation);
+
+    // Remove old animations on parts
+    heading.classList.remove("heading-animate");
+    text.classList.remove("text-animate");
+    button.classList.remove("button-animate");
+
+    // Add animations to each part
+    heading.classList.add("heading-animate");
+    text.classList.add("text-animate");
+    button.classList.add("button-animate");
+
+    popup.classList.add("show");
+
+    // Auto-close after 4 seconds
+    setTimeout(closePopup, 4000);
+  }, 3000);
 });
 
 // POPUP CLOSE FUNCTION
 function closePopup() {
-  document.getElementById("popup").classList.remove("show");
+  const popup = document.getElementById("popup");
+  popup.classList.remove("show");
 }
+
+// CLOSE ON OUTSIDE CLICK
+window.addEventListener("click", (event) => {
+  const popup = document.getElementById("popup");
+  const popupContent = document.querySelector(".popup-content");
+  if (popup.classList.contains("show") && !popupContent.contains(event.target)) {
+    closePopup();
+  }
+});
+
+
+
 
 // COUNTDOWN TIMER
 function startCountdown() {
@@ -50,28 +88,3 @@ function startCountdown() {
   }, 1000);
 }
 startCountdown();
-
-// WEDDING DAY BROWSER NOTIFICATION AT 9:30 AM
-setInterval(() => {
-  const now = new Date();
-  const weddingDay = new Date("2025-05-25");
-
-  if (
-    now.getFullYear() === weddingDay.getFullYear() &&
-    now.getMonth() === weddingDay.getMonth() &&
-    now.getDate() === weddingDay.getDate() &&
-    now.getHours() === 9 &&
-    now.getMinutes() === 30
-  ) {
-    sendWeddingNotification();
-  }
-}, 60000); // Check every minute
-
-function sendWeddingNotification() {
-  if (Notification.permission === "granted") {
-    new Notification("💖 Reminder: Our Wedding!", {
-      body: "The celebration starts soon! See you there! 🎉",
-      icon: "your-icon.png" // Optional: Add your wedding logo here
-    });
-  }
-}
